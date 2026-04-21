@@ -265,6 +265,32 @@ curl -i https://<your-render-domain>.onrender.com/api/menu
 | 前端資源 404                   | `public/` 未正確 serve                                          | 確認 `@elysiajs/static` plugin 已掛載，且 build 有產生 `public/`                     |
 | 加入購物車失敗但重新登入後正常 | 瀏覽器 `localStorage` 保留舊 `userId`，目前資料源查不到該使用者 | 先登出再登入；前端在 `/api/orders` 收到 `401/403/404` 時應清理登入狀態並提示重新登入 |
 
+#### V7 JSON store 版的補充排查流程
+
+若在 Render 上看到以下現象：
+
+- 點「加入購物車」當下出現錯誤訊息
+- 登出再登入後，購物車內卻看得到剛才加入的品項
+
+不要立刻下結論說「Render 寫不進 JSON」。更合理的判讀通常是：
+
+1. 後端已完成 `PATCH /api/orders/:id`
+2. `store.json` 也已更新
+3. 但前端在例外路徑中，沒有把 server 最新訂單狀態同步回來
+
+建議課堂排查順序：
+
+1. 先看 Render logs，確認 `PATCH /api/orders/:id` 是否回 `200`
+2. 再看瀏覽器 Network，確認失敗的是哪一支 request
+3. 若 server 其實已回成功，回頭檢查前端 `catch` 是否直接顯示通用錯誤
+4. 若重新登入後資料存在，優先判斷為「前端狀態同步問題」，不是「JSON 寫入失敗」
+
+對應修正原則：
+
+1. 建立訂單失敗時，區分登入失效與一般錯誤
+2. `addToCart` 失敗時，先重新抓目前訂單，再決定是否真的顯示失敗訊息
+3. 只有在重新抓目前訂單也失敗時，才視為真正失敗
+
 ---
 
 ## 6. 為什麼這時候要教 CI/CD（而且只教最小版）
