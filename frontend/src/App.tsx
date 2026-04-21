@@ -57,7 +57,7 @@ export default function App() {
     setCartTotal(0);
   }
 
-  async function loadCurrentOrder(targetUserId: number): Promise<void> {
+  async function loadCurrentOrder(targetUserId: number): Promise<Order | null> {
     const response = await fetch(
       buildApiUrl(`/api/orders/current?userId=${targetUserId}`),
     );
@@ -71,11 +71,12 @@ export default function App() {
 
     if (!currentOrder) {
       resetCartState();
-      return;
+      return null;
     }
 
     setOrderId(currentOrder.id);
     syncCartFromOrder(currentOrder);
+    return currentOrder;
   }
 
   async function loadOrderHistory(targetUserId: number): Promise<void> {
@@ -349,6 +350,21 @@ export default function App() {
         cartError.message.startsWith("Auth expired:")
       ) {
         return;
+      }
+
+      if (user) {
+        try {
+          const recoveredOrder = await loadCurrentOrder(user.id);
+          const recoveredQty = recoveredOrder?.items.find(
+            (orderItem) => orderItem.item.id === item.id,
+          )?.qty;
+
+          if (typeof recoveredQty === "number" && recoveredQty > 0) {
+            return;
+          }
+        } catch (recoveryError) {
+          console.error(recoveryError);
+        }
       }
 
       setActionError("加入購物車失敗，請稍後再試。");
