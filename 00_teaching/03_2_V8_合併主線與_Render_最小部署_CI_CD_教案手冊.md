@@ -138,6 +138,12 @@ bun run test
 
 合併策略建議使用 squash merge（教學中最容易對照版本變更）。
 
+補充提醒：
+
+- 若目前 `main` 上其實還是 V7，而 V8 尚未 merge 回來
+- 建議先替目前 `main` 留下 `v7-baseline` branch 與 `v7.0.0` tag
+- 這樣之後即使 `main` 前進到 V8，也還能清楚回到 V7 基準
+
 ### 怎麼做
 
 ```bash
@@ -146,6 +152,17 @@ git pull origin main
 git merge --squash feature/v8
 git commit -m "feat: merge V8 to main for deployment baseline"
 git push origin main
+```
+
+若現在的 `main` 仍是 V7，進入 V8 前可先做：
+
+```bash
+git switch main
+git pull origin main
+git branch v7-baseline
+git tag -a v7.0.0 -m "V7 baseline before V8"
+git push origin v7-baseline
+git push origin v7.0.0
 ```
 
 可選但建議：在 main 打版本標籤。
