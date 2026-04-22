@@ -27,20 +27,20 @@
 6. [02_2_導入 OpenAPI ／ Swagger 輸出.md](/root/00*nsPrj/01_backEnd/06_elysia/00_demo01/00_teaching/02_2*導入 OpenAPI ／ Swagger 輸出.md:1)
    把 route schema 輸出成可閱讀、可驗證的 API 文件。
 
-7. [02_3_V7_Render_首次部署教案手冊.md](/root/00_nsPrj/01_backEnd/06_elysia/00_demo01/00_teaching/02_3_V7_Render_首次部署教案手冊.md:1)
+7. [02*3_V7_Render*首次部署教案手冊.md](/root/00_nsPrj/01_backEnd/06_elysia/00_demo01/00_teaching/02_3_V7_Render_首次部署教案手冊.md:1)
    在 V7 結尾先完成第一次 Render 部署，建立平台操作感與驗證習慣。
 
 8. [03_為什麼這個專案選 Drizzle + Neon.md](/root/00*nsPrj/01_backEnd/06_elysia/00_demo01/00_teaching/03*為什麼這個專案選 Drizzle + Neon.md:1)
    說明為什麼資料層升級選擇 `Drizzle + Neon`。
 
-9. [03_0_從老師_repo_建立自己的_repo_並持續同步上游.md](/root/00_nsPrj/01_backEnd/06_elysia/00_demo01/00_teaching/03_0_從老師_repo_建立自己的_repo_並持續同步上游.md:1)
+9. [03*0_0*從老師*repo*建立自己的*repo*並持續同步上游.md](/root/00_nsPrj/01_backEnd/06_elysia/00_demo01/00_teaching/03_0_0_從老師_repo_建立自己的_repo_並持續同步上游.md:1)
    用來教學生如何從老師的教學 repo 建立自己的長期開發基線，並保留同步上游更新的能力。
 
-10. [03_0_1_老師版_repo_保護原則.md](/root/00_nsPrj/01_backEnd/06_elysia/00_demo01/00_teaching/03_0_1_老師版_repo_保護原則.md:1)
+10. [03*0_1*老師版*repo*保護原則.md](/root/00_nsPrj/01_backEnd/06_elysia/00_demo01/00_teaching/03_0_1_老師版_repo_保護原則.md:1)
     用來補充老師端應如何保護教學主 repo，避免學生誤 push、共用憑證或直接污染主線。
 
 11. [03*1_Drizzle+Neon*註冊與升級實作步驟清單.md](/root/00_nsPrj/01_backEnd/06_elysia/00_demo01/00_teaching/03_1_Drizzle+Neon_註冊與升級實作步驟清單.md:1)
-   正式進入 V8 的資料庫升級實作。
+    正式進入 V8 的資料庫升級實作。
 
 12. [03*2_V8*合併主線與*Render*最小部署*CI_CD*教案手冊.md](/root/00_nsPrj/01_backEnd/06_elysia/00_demo01/00_teaching/03_2_V8_合併主線與_Render_最小部署_CI_CD_教案手冊.md:1)
     在 V8 完成後，補講「相對 V7 多了哪些部署調整」，並建立 V8 的主線治理與 CI/CD。
