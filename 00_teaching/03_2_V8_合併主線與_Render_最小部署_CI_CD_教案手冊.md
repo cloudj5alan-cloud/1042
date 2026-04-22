@@ -182,12 +182,18 @@ V7 已做過第一次完整部署，因此這一段不再重講 Render 基本操
 
 | 項目          | V7 設定                         |
 | ------------- | ------------------------------- |
-| Environment   | **Bun**                         |
+| Environment   | **Node**                        |
 | Branch        | `main`                          |
 | Build Command | `bun install && bun run build`  |
 | Start Command | `bun run start`                 |
 
 V8 的任務不是重來一次，而是看清楚哪裡和 V7 不同。
+
+補充提醒：
+
+- 在 Render 的 Web Service 畫面裡，`Environment` 可能只有 `Node`
+- 這不影響本專案使用 `bun`
+- 實務上可直接選 `Node`，並維持 `bun install`、`bun run ...` 這組指令
 
 ---
 
@@ -195,7 +201,7 @@ V8 的任務不是重來一次，而是看清楚哪裡和 V7 不同。
 
 | 欄位          | V7                             | V8                                                   |
 | ------------- | ------------------------------ | ---------------------------------------------------- |
-| Environment   | **Bun**                        | **Bun**（不變）                                      |
+| Environment   | **Node**                       | **Node**（不變）                                     |
 | Branch        | `main`                         | `main`（不變）                                       |
 | Build Command | `bun install && bun run build` | `bun install && bun run db:migrate && bun run build` |
 | Start Command | `bun run start`                | `bun run start`（不變）                              |

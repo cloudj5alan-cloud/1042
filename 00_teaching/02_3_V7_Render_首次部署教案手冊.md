@@ -90,14 +90,14 @@ bun run build
 
 ### 為什麼
 
-Render 原生支援 Bun，設定比 Docker 少，適合課堂第一次上雲。
+實際在 Render 建立 Web Service 時，介面上不一定會看到 `Bun` 選項；常見情況是只有 `Node`。但就本專案的實測結果來看，只要 `Build Command` 與 `Start Command` 直接使用 `bun`，仍可正常部署，設定也比 Docker 少，適合課堂第一次上雲。
 
 ### 要做什麼
 
 依序完成以下四項：
 
 1. 建立 Web Service 並連 GitHub repo
-2. 設定 Bun 環境
+2. 在 Render 的 `Node` 環境中使用 `bun` 指令
 3. 填入正確的 Build / Start 指令
 4. 完成首次部署
 
@@ -116,10 +116,16 @@ Render 原生支援 Bun，設定比 Docker 少，適合課堂第一次上雲。
 | Name          | `breakfast-api`（可自訂）       |
 | Region        | `Singapore`（距台灣較近）       |
 | Branch        | `main`                          |
-| Environment   | **Bun**                         |
+| Environment   | **Node**                        |
 | Build Command | `bun install && bun run build`  |
 | Start Command | `bun run start`                 |
 | Plan          | Free                            |
+
+補充提醒：
+
+- 目前 Render 的 Web Service 介面中，`Environment` 常只看得到 `Node`
+- 不需要因為沒有 `Bun` 選項就停下來
+- 選 `Node` 後，`Build Command` 與 `Start Command` 仍可直接填 `bun ...`
 
 這次最重要的是記住：
 
