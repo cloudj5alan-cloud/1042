@@ -66,7 +66,7 @@
 
 ### 要做什麼
 
-在 `feature/v8` 先完成最低品質閘門：
+在 `feat/v8-drizzle-neon` 先完成最低品質閘門：
 
 - 安裝依賴
 - 型別/語法與測試檢查
@@ -75,7 +75,7 @@
 ### 怎麼做
 
 ```bash
-git checkout feature/v8
+git checkout feat/v8-drizzle-neon
 bun install
 bun run build
 ```
@@ -97,7 +97,7 @@ bun run test
 
 ### 要做什麼
 
-建立 `feature/v8 -> main` 的 PR，並在合併前同時滿足：
+建立 `feat/v8-drizzle-neon -> main` 的 PR，並在合併前同時滿足：
 
 1. 技術 Reviewer 同意
 2. PM/PO 確認可上線
@@ -149,7 +149,7 @@ bun run test
 ```bash
 git checkout main
 git pull origin main
-git merge --squash feature/v8
+git merge --squash feat/v8-drizzle-neon
 git commit -m "feat: merge V8 to main for deployment baseline"
 git push origin main
 ```
